@@ -10,6 +10,7 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Daniel Monk',
+      themeMode: ThemeMode.system,
       theme: ThemeData(
           primarySwatch: Colors.blue,
           useMaterial3: true,
@@ -18,6 +19,9 @@ class AppView extends StatelessWidget {
             foregroundColor: Colors.white,
           ),
       ),
+ /*     darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true
+      ),*/
       routes: {
         '/loading': (context) => const SplashPage(),
       },

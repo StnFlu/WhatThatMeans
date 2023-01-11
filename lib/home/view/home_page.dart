@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whats_that_mean/home/cubit/search_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,8 +10,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (_) => HomeNavigationCubit(index),
+    return MultiBlocProvider (
+        providers: [
+          BlocProvider<HomeNavigationCubit>(
+            create: (_) => HomeNavigationCubit(index),
+          ),
+          BlocProvider<SearchCubit>(
+            create: (_) => SearchCubit(),
+          ),
+        ],
         child: const HomeView()
     );
   }
