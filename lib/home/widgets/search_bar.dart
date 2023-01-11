@@ -20,9 +20,9 @@ class _SearchBarState extends State<SearchBar> {
   void initState() {
     _searchFieldFocusNode.addListener(() {
       if(_searchFieldFocusNode.hasFocus) {
-        context.read<SearchCubit>().enable();
+        context.read<SearchExpandCubit>().enable();
       } else {
-        context.read<SearchCubit>().disable();
+        context.read<SearchExpandCubit>().disable();
       }
 
     });
@@ -35,7 +35,7 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchCubit, bool>(
+    return BlocBuilder<SearchExpandCubit, bool>(
         builder: (context, state) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,

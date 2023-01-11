@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whats_that_mean/home/cubit/search_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 
-class HomePage extends StatelessWidget {
+class SearchPage extends StatelessWidget {
 
   final int index;
-  const HomePage({this.index = 0, Key? key}) : super(key: key);
+  const SearchPage({this.index = 0, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
