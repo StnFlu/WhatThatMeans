@@ -28,6 +28,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               title: const Text('Home Page'),
             ),
             body: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _pageController = PageController(initialPage: state),
               children: [
                 Text('test1'),
