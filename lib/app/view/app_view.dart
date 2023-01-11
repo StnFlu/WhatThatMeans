@@ -10,14 +10,18 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Daniel Monk',
+      themeMode: ThemeMode.system,
       theme: ThemeData(
           primarySwatch: Colors.blue,
           useMaterial3: true,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.brown,
             foregroundColor: Colors.white,
-          )
+          ),
       ),
+ /*     darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true
+      ),*/
       routes: {
         '/loading': (context) => const SplashPage(),
       },
@@ -28,10 +32,10 @@ class AppView extends StatelessWidget {
         }
         if (settings.name == "/home") {
           return _createRoute(
-              page: const HomeView(), settings: settings);
+              page: const HomePage(), settings: settings);
         }
         return MaterialPageRoute(
-            builder: (_) => const HomeView());
+            builder: (_) => const HomePage());
       },
       initialRoute: '/',
     );
