@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whats_that_mean/home/home.dart';
 
 class HomePage extends StatelessWidget {
 
-  const HomePage({Key? key}) : super(key: key);
+  final int index;
+  const HomePage({this.index = 0, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const HomeView();
+    return BlocProvider(
+        create: (_) => HomeNavigationCubit(index),
+        child: const HomeView()
+    );
   }
 }

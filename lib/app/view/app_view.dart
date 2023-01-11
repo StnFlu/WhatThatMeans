@@ -16,7 +16,7 @@ class AppView extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.brown,
             foregroundColor: Colors.white,
-          )
+          ),
       ),
       routes: {
         '/loading': (context) => const SplashPage(),
@@ -28,10 +28,10 @@ class AppView extends StatelessWidget {
         }
         if (settings.name == "/home") {
           return _createRoute(
-              page: const HomeView(), settings: settings);
+              page: const HomePage(), settings: settings);
         }
         return MaterialPageRoute(
-            builder: (_) => const HomeView());
+            builder: (_) => const HomePage());
       },
       initialRoute: '/',
     );
