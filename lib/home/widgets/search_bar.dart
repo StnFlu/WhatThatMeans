@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:whats_that_mean/home/cubit/search_cubit.dart';
+import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 
 class SearchBar extends StatefulWidget {
@@ -20,9 +21,9 @@ class _SearchBarState extends State<SearchBar> {
   void initState() {
     _searchFieldFocusNode.addListener(() {
       if(_searchFieldFocusNode.hasFocus) {
-        context.read<SearchCubit>().enable();
+        context.read<SearchExpandCubit>().enable();
       } else {
-        context.read<SearchCubit>().disable();
+        context.read<SearchExpandCubit>().disable();
       }
 
     });
@@ -35,7 +36,7 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchCubit, bool>(
+    return BlocBuilder<SearchExpandCubit, bool>(
         builder: (context, state) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -65,6 +66,7 @@ class _SearchBarState extends State<SearchBar> {
                   },
                   onFieldSubmitted: (text){
                     context.read<HomeNavigationCubit>().navigateToSearch();
+                    context.read<SearchResultCubit>().search(text);
 
                   },
                 ),
