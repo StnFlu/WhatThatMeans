@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:whats_that_mean/home/cubit/search_cubit.dart';
+import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 
 class SearchBar extends StatefulWidget {
@@ -65,6 +66,7 @@ class _SearchBarState extends State<SearchBar> {
                   },
                   onFieldSubmitted: (text){
                     context.read<HomeNavigationCubit>().navigateToSearch();
+                    context.read<SearchResultCubit>().search(text);
 
                   },
                 ),

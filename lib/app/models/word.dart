@@ -18,14 +18,16 @@ class Word extends Equatable{
   }
 
   factory Word.fromJson(Map<String, dynamic> json) {
+    print(json);
+
     return Word(
       definition: json['definition'],
       partOfSpeech: json['partOfSpeech'],
-      synonyms: json['synonyms'],
-      typeOf: json['typeOf'],
-      hasTypes: json['hasTypes'],
-      derivation: json['derivation'],
-      examples: json['examples'],
+      synonyms: json.containsKey('synonyms') ? (json['synonyms'] as List)?.map((item) => item as String)?.toList() : null,
+      typeOf: json.containsKey('typeOf') ? (json['typeOf'] as List)?.map((item) => item as String)?.toList() : null,
+      hasTypes: json.containsKey('hasTypes') ? (json['hasTypes'] as List)?.map((item) => item as String)?.toList() : null,
+      derivation: json.containsKey('derivation') ? (json['derivation'] as List)?.map((item) => item as String)?.toList() : null,
+      examples: json.containsKey('examples') ? (json['examples'] as List)?.map((item) => item as String)?.toList() : null,
     );
   }
 

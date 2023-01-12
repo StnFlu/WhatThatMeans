@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:keyboard_dismisser/keyboard_dismisser.dart';
-import 'package:whats_that_mean/home/widgets/search_bar.dart';
-
-import '../../home/navigation/home_navigation_cubit.dart';
+import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
+import 'package:whats_that_mean/search/cubit/search_cubit.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -13,75 +11,30 @@ class SearchView extends StatefulWidget {
   State<SearchView> createState() => _SearchViewState();
 }
 
-class _SearchViewState extends State<SearchView> with TickerProviderStateMixin {
+class _SearchViewState extends State<SearchView> with AutomaticKeepAliveClientMixin {
 
-  PageController? _pageController;
   @override
-  void initState() {
-    super.initState();
-  }
-
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeNavigationCubit, int>(
+    super.build(context);
+    return BlocBuilder<SearchCubit, SearchState>(
         builder: (context, state) {
-          if (state != _pageController?.page && _pageController != null) {
-            _pageController?.animateToPage(state, duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-          }
-          return KeyboardDismisser(
-            child: Scaffold(
-              appBar: AppBar(
-
-                title: SearchBar(),
-                titleSpacing: 4,
-
-
-              ),
-              body: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: _pageController = PageController(initialPage: state),
-                children: [
-                  Text('test1'),
-                  Text('test2'),
-                  Text('test3'),
-                  Text('test4'),
-                ],
-              ),
-              bottomNavigationBar: BottomNavigationBar(
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
-                    backgroundColor: Colors.brown,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.calendar_month),
-                    label: 'WOTD',
-                    backgroundColor: Colors.brown,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.search),
-                    label: 'Search',
-                    backgroundColor: Colors.brown,
-
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.bookmarks_rounded),
-                    label: 'Saved',
-                    backgroundColor: Colors.brown,
-
-                  ),
-                ],
-                currentIndex: state,
-                selectedItemColor: Colors.amber[800],
-                showUnselectedLabels: true,
-                onTap: (index) {
-                  context.read<HomeNavigationCubit>().navigateTo(index);
-                  _pageController?.animateToPage(index, duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-                  },
-              ),
-            ),
+          return BlocBuilder<SearchResultCubit, String>(
+              builder: (context, search) {
+                if(search != ""){
+                  print('searching');
+                  context.read<SearchCubit>().fetchWord(search);
+                }
+                print(state);
+              return Container(
+                color: Colors.red,
+                width: 30,
+                height: 399,
+                child: Text(state.fullWord?.word ?? "no word search"),
+              );
+            }
           );
         }
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:whats_that_mean/home/widgets/search_bar.dart';
+import 'package:whats_that_mean/search/search.dart';
 
 import '../navigation/home_navigation_cubit.dart';
 
@@ -44,7 +45,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                 children: [
                   Text('test1'),
                   Text('test2'),
-                  Text('test3'),
+                  SearchPage(),
                   Text('test4'),
                 ],
               ),

@@ -13,16 +13,13 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(const SearchState());
   final WordController wordController = WordController();
 
-  void fetchWord([String? word]) async {
+  void fetchWord(String? word) async {
     final response = await wordController.getWord(query: word );
     if (response.statusCode == 200) {
       emit(state.copyWith(
-        fullWord: FullWord.fromJson(jsonDecode(response.body))
+        fullWord: FullWord.fromJson(jsonDecode(response.body)),
+        searchField: word
       ));
     }
-    throw Exception('error fetching posts');
-
   }
-
-
 }
