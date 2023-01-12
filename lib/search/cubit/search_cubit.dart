@@ -20,6 +20,12 @@ class SearchCubit extends Cubit<SearchState> {
         fullWord: FullWord.fromJson(jsonDecode(response.body)),
         searchField: word
       ));
+    } else {
+
+      emit(state.copyWith(
+        fullWord: null,
+        searchField: word
+      ));
     }
   }
 }

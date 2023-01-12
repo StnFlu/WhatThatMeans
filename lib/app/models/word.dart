@@ -8,9 +8,6 @@ class Word extends Equatable{
   final List<String>? derivation;
   final List<String>? examples;
 
-
-
-
   const Word({this.definition, this.partOfSpeech, this.synonyms, this.typeOf, this.hasTypes, this.derivation, this.examples});
 
   static List<Word> fromJsonList(List list) {

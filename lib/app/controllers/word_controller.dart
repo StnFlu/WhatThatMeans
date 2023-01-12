@@ -10,7 +10,8 @@ class WordController extends APIController {
     switch (response.statusCode) {
       case 200:
         return response;
-
+      case 404:
+        return response;
       default:
         throw APIException('Unknown response', response.body);
     }

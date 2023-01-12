@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                 children: [
                   Text('test1'),
                   Text('test2'),
-                  SearchPage(),
+                  SingleChildScrollView(child: SearchPage()),
                   Text('test4'),
                 ],
               ),
