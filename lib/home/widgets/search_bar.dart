@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:whats_that_mean/app/app.dart';
-import 'package:whats_that_mean/home/cubit/search_cubit.dart';
-import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 
 class SearchBar extends StatefulWidget {
@@ -84,7 +82,7 @@ class _SearchBarState extends State<SearchBar> {
               width: state ? 0 : 50,
               duration: const Duration(milliseconds: 400),
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child:  BlocBuilder<ThemeCubit, ThemeMode>(builder: (context, state) {
                     return DayNightSwitcher(
                     isDarkModeEnabled: state == ThemeMode.dark || (state == ThemeMode.system && Theme.of(context).brightness == Brightness.dark),

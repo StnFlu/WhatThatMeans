@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whats_that_mean/home/cubit/search_cubit.dart';
-import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 import 'package:whats_that_mean/saved/cubit/saved_cubit.dart';
 

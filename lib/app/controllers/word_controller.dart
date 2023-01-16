@@ -1,4 +1,3 @@
-import 'package:whats_that_mean/app/models/full_word.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_controller.dart';
