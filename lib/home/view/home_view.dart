@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:whats_that_mean/home/widgets/search_bar.dart';
-import 'package:whats_that_mean/search/search.dart';
+import 'package:whats_that_mean/saved/saved.dart';
+import 'package:whats_that_mean/search/view/search_page.dart';
 
 import '../navigation/home_navigation_cubit.dart';
 
@@ -34,7 +35,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
             child: Scaffold(
               appBar: AppBar(
 
-                title: SearchBar(),
+                title: const SearchBar(),
                 titleSpacing: 4,
 
 
@@ -43,15 +44,14 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _pageController = PageController(initialPage: state),
                 children: [
-                  Text('test1'),
-                  Text('test2'),
                   SingleChildScrollView(child: SearchPage()),
-                  Text('test4'),
+                  SingleChildScrollView(child: SavedPage()),
+
                 ],
               ),
               bottomNavigationBar: BottomNavigationBar(
                 items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
+                /*  BottomNavigationBarItem(
                     icon: Icon(Icons.home),
                     label: 'Home',
                     backgroundColor: Colors.brown,
@@ -60,7 +60,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                     icon: Icon(Icons.calendar_month),
                     label: 'WOTD',
                     backgroundColor: Colors.brown,
-                  ),
+                  ),*/
+
                   BottomNavigationBarItem(
                     icon: Icon(Icons.search),
                     label: 'Search',
@@ -74,6 +75,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
 
                   ),
                 ],
+                backgroundColor: Colors.brown,
+
                 currentIndex: state,
                 selectedItemColor: Colors.amber[800],
                 showUnselectedLabels: true,

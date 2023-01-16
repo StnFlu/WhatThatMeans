@@ -14,6 +14,13 @@ class SearchCubit extends Cubit<SearchState> {
   final WordController wordController = WordController();
 
   void fetchWord(String? word) async {
+    if(word == "") {
+      return emit(state.copyWith(
+        fullWord: null,
+        searchField: null
+    ));
+    }
+
     final response = await wordController.getWord(query: word );
     if (response.statusCode == 200) {
       emit(state.copyWith(

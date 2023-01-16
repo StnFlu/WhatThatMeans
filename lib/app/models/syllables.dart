@@ -17,6 +17,13 @@ class Syllables extends Equatable{
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      "count": count,
+      "examples": examples,
+    };
+  }
+
   @override
   bool get stringify => true;
 
