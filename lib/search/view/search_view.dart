@@ -93,8 +93,6 @@ class _SearchViewState extends State<SearchView> with AutomaticKeepAliveClientMi
               ),
             ),
           ),
-
-
         ],
       ),
     );

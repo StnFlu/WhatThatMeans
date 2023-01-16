@@ -20,28 +20,48 @@ class WordTile extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
-            color: Theme.of(context).canvasColor,
+            color: Theme.of(context).primaryColor,
             child: Column(
               children: [
-                Visibility(
-                  replacement: IconButton(
-                      onPressed: () {
-                        context.read<SavedWordCubit>().removeWord(fullWord);
-                      },
-                      icon: const Icon(
-                        Icons.delete
-                      )),
-                  visible: !(state.fullWords ?? [])!.contains(fullWord),
-                  child: IconButton(
-                      onPressed: () {
-                        context.read<SavedWordCubit>().saveWord(fullWord);
-                      },
-                      icon: const Icon(
-                        Icons.save,
-                      )),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0, right: 12, top: 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(fullWord!.word!, style: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.white),),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 3.0,
+                              color: Colors.white
+                          ),
+                          borderRadius: const BorderRadius.all(
+                              Radius.circular(12.0)
+                          ),
+                        ),
+                        child: Visibility(
+                          replacement: IconButton(
+                              onPressed: () {
+                                context.read<SavedWordCubit>().removeWord(fullWord);
+                              },
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              )),
+                          visible: !(state.fullWords ?? [])!.contains(fullWord),
+                          child: IconButton(
+                              onPressed: () {
+                                context.read<SavedWordCubit>().saveWord(fullWord);
+                              },
+                              icon: const Icon(
+                                Icons.save,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Text(fullWord!.word!),
-                //  Text(fullWord!.singlePronunciation == null ? fullWord!.pronunciation!.all! : fullWord!.singlePronunciation!),
                 Column(
                   children: words() ?? [],
                 ),

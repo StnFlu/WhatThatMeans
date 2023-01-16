@@ -20,7 +20,6 @@ class FullWord extends Equatable{
   }
 
   factory FullWord.fromJson(Map<String, dynamic> json) {
-    print(json);
     return FullWord(
       word: json['word'],
       words: json.containsKey('results') ?  Word.fromJsonList(json['results']) : null,
