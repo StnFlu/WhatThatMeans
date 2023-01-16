@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.whats_that_mean">
    <application
-        android:label="Whats That Mean?"
+        android:label="What That Means?"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
