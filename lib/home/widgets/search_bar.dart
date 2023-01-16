@@ -62,7 +62,7 @@ class _SearchBarState extends State<SearchBar> {
                   ),
                   focusNode: _searchFieldFocusNode,
                   onChanged: (text){
-
+                  
                   },
                   onFieldSubmitted: (text){
                     context.read<HomeNavigationCubit>().navigateToSearch();

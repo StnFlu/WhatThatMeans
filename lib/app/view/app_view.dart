@@ -12,7 +12,7 @@ class AppView extends StatelessWidget {
       title: 'Daniel Monk',
       themeMode: ThemeMode.system,
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.brown,
           useMaterial3: true,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.brown,

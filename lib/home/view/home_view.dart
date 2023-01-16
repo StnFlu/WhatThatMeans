@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
             child: Scaffold(
               appBar: AppBar(
 
-                title: SearchBar(),
+                title: const SearchBar(),
                 titleSpacing: 4,
 
 
