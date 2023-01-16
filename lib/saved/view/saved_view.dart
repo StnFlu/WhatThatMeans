@@ -23,8 +23,12 @@ class _SavedViewState extends State<SavedView> with AutomaticKeepAliveClientMixi
     super.build(context);
     return BlocBuilder<SavedWordCubit, SavedWordState>(
         builder: (context, state) {
-         return Column(
-           children: savedWords(state) ?? []
+         return Visibility(
+           visible: state.size != 0,
+           replacement: wordNotFound(),
+           child: Column(
+             children: savedWords(state) ?? []
+           ),
          ); Text((state.fullWords ?? []).length.toString()) ;
         }
     );
@@ -36,5 +40,34 @@ class _SavedViewState extends State<SavedView> with AutomaticKeepAliveClientMixi
     }
     return state.fullWords!.map((e) => WordTile(fullWord: e)).toList();
   }
+
+  Widget wordNotFound(){
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(32)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.book, size: 58, color: Theme.of(context).canvasColor,),
+                  Text("No Words Saved", style: Theme.of(context).textTheme.subtitle1?.copyWith(color: Colors.white),),
+                  Text("Start searching for words to add them to your list", style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.white),)
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 
 }

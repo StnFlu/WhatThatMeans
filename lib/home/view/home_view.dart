@@ -44,8 +44,6 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _pageController = PageController(initialPage: state),
                 children: [
-                  Text('test1'),
-                  Text('test2'),
                   SingleChildScrollView(child: SearchPage()),
                   SingleChildScrollView(child: SavedPage()),
 
@@ -53,7 +51,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               ),
               bottomNavigationBar: BottomNavigationBar(
                 items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
+                /*  BottomNavigationBarItem(
                     icon: Icon(Icons.home),
                     label: 'Home',
                     backgroundColor: Colors.brown,
@@ -62,7 +60,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                     icon: Icon(Icons.calendar_month),
                     label: 'WOTD',
                     backgroundColor: Colors.brown,
-                  ),
+                  ),*/
+
                   BottomNavigationBarItem(
                     icon: Icon(Icons.search),
                     label: 'Search',
@@ -76,6 +75,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
 
                   ),
                 ],
+                backgroundColor: Colors.brown,
+
                 currentIndex: state,
                 selectedItemColor: Colors.amber[800],
                 showUnselectedLabels: true,
