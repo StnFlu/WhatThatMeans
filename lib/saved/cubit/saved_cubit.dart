@@ -18,7 +18,7 @@ class SavedWordCubit extends Cubit<SavedWordState> with HydratedMixin {
     if(word == null) return;
     List<FullWord> words = state.fullWords ?? [];
     if((state.fullWords ?? []).contains(word)) return;
-    words.add(word!);
+    words.insert(0, word!);
     emit(state.copyWith(
       fullWord: words,
       sizeNum: words.length
@@ -36,7 +36,6 @@ class SavedWordCubit extends Cubit<SavedWordState> with HydratedMixin {
 
   @override
   SavedWordState fromJson(Map<String, dynamic> json) {
-    print(json);
       List<FullWord> listOfWords = FullWord.fromJsonList(jsonDecode(json['saved_word']));
       return SavedWordState(fullWords: listOfWords, size: listOfWords.length);
   }

@@ -24,7 +24,7 @@ class _SavedViewState extends State<SavedView> with AutomaticKeepAliveClientMixi
     return BlocBuilder<SavedWordCubit, SavedWordState>(
         builder: (context, state) {
          return Visibility(
-           visible: state.size != 0,
+           visible: state.size != 0 && state.size != null,
            replacement: wordNotFound(),
            child: Column(
              children: savedWords(state) ?? []

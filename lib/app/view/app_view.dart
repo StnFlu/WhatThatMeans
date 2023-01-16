@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whats_that_mean/app/cubit/theme_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
 import 'package:whats_that_mean/splash/splash.dart';
 
@@ -8,36 +10,49 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Daniel Monk',
-      themeMode: ThemeMode.system,
-      theme: ThemeData(
-          primarySwatch: Colors.brown,
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.brown,
-            foregroundColor: Colors.white,
-          ),
+    return  BlocProvider<ThemeCubit>(
+      create: (_) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+          builder: (context, state) {
+          return MaterialApp(
+            title: 'Daniel Monk',
+            themeMode: state,
+            theme: ThemeData(
+                primarySwatch: Colors.brown,
+                useMaterial3: true,
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.brown,
+                  foregroundColor: Colors.white,
+                ),
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              primarySwatch: Colors.brown,
+              useMaterial3: true,
+              appBarTheme: const AppBarTheme(
+                backgroundColor: Colors.brown,
+                foregroundColor: Colors.white,
+              ),
+            ),
+            routes: {
+              '/loading': (context) => const SplashPage(),
+            },
+            onGenerateRoute: (settings) {
+              if (settings.name == "/") {
+                return _createRoute(
+                    page: const SplashPage(), settings: settings);
+              }
+              if (settings.name == "/home") {
+                return _createRoute(
+                    page: const HomePage(), settings: settings);
+              }
+              return MaterialPageRoute(
+                  builder: (_) => const HomePage());
+            },
+            initialRoute: '/',
+          );
+        }
       ),
- /*     darkTheme: ThemeData.dark().copyWith(
-        useMaterial3: true
-      ),*/
-      routes: {
-        '/loading': (context) => const SplashPage(),
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == "/") {
-          return _createRoute(
-              page: const SplashPage(), settings: settings);
-        }
-        if (settings.name == "/home") {
-          return _createRoute(
-              page: const HomePage(), settings: settings);
-        }
-        return MaterialPageRoute(
-            builder: (_) => const HomePage());
-      },
-      initialRoute: '/',
     );
   }
 }

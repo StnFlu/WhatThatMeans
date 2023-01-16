@@ -7,6 +7,6 @@ class HomeNavigationCubit extends Cubit<int> {
   void navigateTo(int index) => emit(index);
   void navigateToHome() => emit(0);
   void navigateToWordOfTheDay() => emit(1);
-  void navigateToSearch() => emit(2);
-  void navigateToSaved() => emit(3);
+  void navigateToSearch() => emit(0);
+  void navigateToSaved() => emit(1);
 }
