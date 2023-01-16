@@ -9,6 +9,7 @@ environment:
   sdk: '>=2.18.4 <3.0.0'
 
 dependencies:
+  day_night_switcher: ^0.2.0+1
   shared_preferences: ^2.0.15
   http: ^0.13.5
   keyboard_dismisser: ^3.0.0

@@ -29,7 +29,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
     return BlocBuilder<HomeNavigationCubit, int>(
         builder: (context, state) {
           if (state != _pageController?.page && _pageController != null) {
-            _pageController?.animateToPage(state, duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+            _pageController?.animateToPage(state, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
           }
           return KeyboardDismisser(
             child: Scaffold(
@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               body: PageView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _pageController = PageController(initialPage: state),
-                children: [
+                children: const [
                   SingleChildScrollView(child: SearchPage()),
                   SingleChildScrollView(child: SavedPage()),
 
@@ -82,7 +82,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                 showUnselectedLabels: true,
                 onTap: (index) {
                   context.read<HomeNavigationCubit>().navigateTo(index);
-                  _pageController?.animateToPage(index, duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                  _pageController?.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
                   },
               ),
             ),

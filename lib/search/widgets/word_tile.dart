@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whats_that_mean/app/models/full_word.dart';
@@ -48,7 +47,7 @@ class WordTile extends StatelessWidget {
                                 Icons.delete,
                                 color: Colors.white,
                               )),
-                          visible: !(state.fullWords ?? [])!.contains(fullWord),
+                          visible: !(state.fullWords ?? []).contains(fullWord),
                           child: IconButton(
                               onPressed: () {
                                 context.read<SavedWordCubit>().saveWord(fullWord);

@@ -1,9 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
 import 'package:whats_that_mean/saved/cubit/saved_cubit.dart';
-import 'package:whats_that_mean/search/cubit/search_cubit.dart';
 import 'package:whats_that_mean/search/widgets/word_tile.dart';
 
 class SavedView extends StatefulWidget {
@@ -24,12 +22,12 @@ class _SavedViewState extends State<SavedView> with AutomaticKeepAliveClientMixi
     return BlocBuilder<SavedWordCubit, SavedWordState>(
         builder: (context, state) {
          return Visibility(
-           visible: state.size != 0,
+           visible: state.size != 0 && state.size != null,
            replacement: wordNotFound(),
            child: Column(
              children: savedWords(state) ?? []
            ),
-         ); Text((state.fullWords ?? []).length.toString()) ;
+         );
         }
     );
   }
