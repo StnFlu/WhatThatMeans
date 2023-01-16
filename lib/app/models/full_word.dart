@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:whats_that_mean/app/models/pronunciation.dart';
 import 'package:whats_that_mean/app/models/syllables.dart';
@@ -18,6 +20,7 @@ class FullWord extends Equatable{
   }
 
   factory FullWord.fromJson(Map<String, dynamic> json) {
+    print(json);
     return FullWord(
       word: json['word'],
       words: json.containsKey('results') ?  Word.fromJsonList(json['results']) : null,
@@ -27,9 +30,20 @@ class FullWord extends Equatable{
     );
   }
 
+
+
+  Map<String, dynamic> toJson() {
+
+    return {
+      "word": word,
+      "results": words,
+      "typeOf" : syllables,
+      "pronunciation" : pronunciation is String ? singlePronunciation : pronunciation
+    };
+  }
   @override
   bool get stringify => true;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [word ?? ""];
 }

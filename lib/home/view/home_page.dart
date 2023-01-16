@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whats_that_mean/home/cubit/search_cubit.dart';
 import 'package:whats_that_mean/home/cubit/search_result_cubit.dart';
 import 'package:whats_that_mean/home/home.dart';
+import 'package:whats_that_mean/saved/cubit/saved_cubit.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -21,6 +22,9 @@ class HomePage extends StatelessWidget {
           ),
           BlocProvider<SearchResultCubit>(
             create: (_) => SearchResultCubit(),
+          ),
+          BlocProvider<SavedWordCubit>(
+            create: (_) => SavedWordCubit(),
           ),
         ],
         child: const HomeView()

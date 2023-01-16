@@ -30,7 +30,6 @@ class Pronunciation extends Equatable {
   }
 
   factory Pronunciation.fromJson(Map<String, dynamic> json) {
-    print(json);
     return Pronunciation(
       all: json.containsKey('all') ? json['all'] : null,
       verb: json.containsKey('verb') ? json['verb'] : null,
@@ -43,6 +42,21 @@ class Pronunciation extends Equatable {
       conjunction: json.containsKey('conjunction') ? json['conjunction'] : null,
       interjection: json.containsKey('interjection') ? json['interjection'] : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "all": all,
+      "verb": verb,
+      "noun" : noun,
+      "adjective" : adjective,
+      "determiner" : determiner,
+      "adverb" : adverb,
+      "pronoun" : pronoun,
+      "preposition" : preposition,
+      "conjunction" : conjunction,
+      "interjection" : interjection
+    };
   }
 
   @override
